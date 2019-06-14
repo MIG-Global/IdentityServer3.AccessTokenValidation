@@ -20,9 +20,13 @@ using Microsoft.Owin.Logging;
 using Microsoft.Owin.Security.Jwt;
 using Microsoft.Owin.Security.OAuth;
 using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens;
 using System.Linq;
 using System.Threading;
+using Microsoft.IdentityModel.Tokens;
+using SecurityKey = System.IdentityModel.Tokens.SecurityKey;
+using SecurityToken = System.IdentityModel.Tokens.SecurityToken;
 
 namespace Owin
 {
@@ -154,7 +158,7 @@ namespace Owin
                     {
                         ValidIssuer = options.IssuerName,
                         ValidAudience = audience,
-                        IssuerSigningToken = new X509SecurityToken(options.SigningCertificate),
+                        IssuerSigningKey = new X509SecurityKey(options.SigningCertificate),
 
                         NameClaimType = options.NameClaimType,
                         RoleClaimType = options.RoleClaimType,
@@ -211,10 +215,10 @@ namespace Owin
             }, LazyThreadSafetyMode.PublicationOnly);
         }
 
-        private static SecurityKey ResolveRsaKeys(
+        private static IEnumerable<Microsoft.IdentityModel.Tokens.SecurityKey> ResolveRsaKeys(
             string token, 
-            SecurityToken securityToken, 
-            SecurityKeyIdentifier keyIdentifier, 
+            Microsoft.IdentityModel.Tokens.SecurityToken securityToken1, 
+            string kid, 
             TokenValidationParameters validationParameters)
         {
             string id = null;
@@ -230,7 +234,7 @@ namespace Owin
 
             if (id == null) return null;
 
-            var issuerToken = validationParameters.IssuerSigningTokens.FirstOrDefault(it => it.Id == id);
+            var issuerToken = validationParameters.IssuerSigningKeys.FirstOrDefault(it => it.Id == id);
             if (issuerToken == null) return null;
 
             return issuerToken.SecurityKeys.FirstOrDefault();

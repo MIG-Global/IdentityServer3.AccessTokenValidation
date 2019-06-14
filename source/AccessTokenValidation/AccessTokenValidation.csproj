@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>IdentityServer3.AccessTokenValidation</RootNamespace>
     <AssemblyName>IdentityServer3.AccessTokenValidation</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -76,13 +77,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="IdentityModel">
-      <Version>1.9.2</Version>
+      <Version>3.10.10</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNet.WebApi.Client">
-      <Version>5.2.3</Version>
+      <Version>5.2.6</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.IdentityModel.Protocol.Extensions">
-      <Version>1.0.2.206221351</Version>
+      <Version>1.0.4.403061554</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Owin.Security.Jwt">
       <Version>3.0.1</Version>
@@ -91,7 +92,10 @@
       <Version>4.2.1510.2205</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
-      <Version>8.0.3</Version>
+      <Version>12.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt">
+      <Version>5.3.0</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
