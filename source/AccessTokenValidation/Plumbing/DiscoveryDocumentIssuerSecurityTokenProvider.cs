@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-using Microsoft.IdentityModel.Protocols;
+using System.IdentityModel.Services;
 using Microsoft.Owin.Logging;
 using Microsoft.Owin.Security.Jwt;
 using System;

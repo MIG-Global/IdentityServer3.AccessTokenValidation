@@ -164,7 +164,7 @@ namespace Owin
                         RoleClaimType = options.RoleClaimType,
                     };
 
-                    tokenFormat = new JwtFormat(valParams);
+                    tokenFormat = null; //new JwtFormat(valParams);
                 }
                 else
                 {
@@ -198,7 +198,7 @@ namespace Owin
                         valParams.IssuerSigningKeyResolver = ResolveRsaKeys;
                     }
 
-                    tokenFormat = new JwtFormat(valParams, issuerProvider);
+                    tokenFormat = null; //new JwtFormat(valParams, issuerProvider);
                 }
 
 
