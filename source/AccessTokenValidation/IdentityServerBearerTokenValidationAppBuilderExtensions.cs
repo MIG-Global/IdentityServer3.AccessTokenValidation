@@ -221,23 +221,8 @@ namespace Owin
             string kid, 
             TokenValidationParameters validationParameters)
         {
-            string id = null;
-            foreach (var keyId in keyIdentifier)
-            {
-                var nk = keyId as NamedKeySecurityKeyIdentifierClause;
-                if (nk != null)
-                {
-                    id = nk.Id;
-                    break;
-                }
-            }
-
-            if (id == null) return null;
-
-            var issuerToken = validationParameters.IssuerSigningKeys.FirstOrDefault(it => it.Id == id);
-            if (issuerToken == null) return null;
-
-            return issuerToken.SecurityKeys.FirstOrDefault();
+            if (kid == null) return null;
+            return validationParameters.IssuerSigningKeys.Where(it => it.KeyId == kid);
         }
     }
 }
