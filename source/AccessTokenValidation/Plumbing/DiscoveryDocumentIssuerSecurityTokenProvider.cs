@@ -23,6 +23,8 @@ using System.IdentityModel.Tokens;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Threading;
+using Microsoft.IdentityModel.Tokens;
+using SecurityToken = System.IdentityModel.Tokens.SecurityToken;
 
 namespace IdentityServer3.AccessTokenValidation
 {
